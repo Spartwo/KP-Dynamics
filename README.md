@@ -3,6 +3,8 @@ This repository contains a series of mods created for the game Kerbal Powers, by
 
 **KP Naval** 
 
+![alt text]([http://url/to/img.png](https://wiki.kerbalpowers.org/images/1/19/KP_Naval.png))
+
 A lightweight, stockalike and physically accurate mod enabling the creation of watercraft and submarines with minimal complexity and additions to the stock game. Includes three different sizes of propellers and variable ballast tanks, which simulate thrust and buoyancy in a realistic way in multiple environments including other celestial bodies. Also contains minor quality of life improvements to fuel cells and wheels. Compatible with Waterfall.
 
 
