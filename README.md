@@ -1,4 +1,4 @@
-This repository contains a series of mods created for the game Kerbal Powers, by Spartwo and MiffedStarfish.
+A series of mods created for the game Kerbal Powers, by Spartwo and MiffedStarfish.
 
 -------------------------------------------------------
 ### Kerbal Powers Naval
