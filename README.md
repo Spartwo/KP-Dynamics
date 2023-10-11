@@ -11,17 +11,17 @@ A lightweight, stockalike and physically accurate mod enabling the creation of w
 -------------------------------------------------------
 ### Kerbal Powers Interstellar
 
-A small mod adding an extremely efficient but thermally demanding vacuum engine, the Ptelyeos. Allows for interstellar transits or rapid in-system travel with minimal changes to stock.  Some parts use art modified from the works of Nearta and Porkjet in compliance with respective licenses.
+A small mod adding an extremely efficient but thermally demanding afterburning fusion engine for vacuum. Allows for interstellar transits or rapid in-system travel with minimal changes to stock.  Some parts use art modified from the works of Nearta and Porkjet in compliance with respective licenses.
 
 -------------------------------------------------------
 ### Kerbal Powers Armory
 
 ![alt text](https://i.imgur.com/JKCSl2w.png)
-An addon for BDArmory, adding two new radars with unique functionality alongside a high-powered microwave turret, additional yields of bomb, and a smaller variant of smoke countermeasure launcher.
+An addon for BDArmory, adding two new radars with unique functionality alongside a high-powered microwave turret, additional yields of bomb, and a smaller smoke countermeasure launcher variant.
 
 -------------------------------------------------------
 
-*All mods are compatible with Waterfall and TURD. Paint for KP armory can be found bundled with TURD for BD armory  [here](https://github.com/Spartwo/TURD-BDArmory).*
+*All mods are compatible with Waterfall and TURD. Paint for KP Armory can be found bundled with TURD for BD Armory  [here](https://github.com/Spartwo/TURD-BDArmory).*
 
 
 -------------------------------------------------------
