@@ -38,7 +38,7 @@ namespace Gladia
             if (base.CheckTransformsUnderwater())
             {
                 base.status = "Nominal";
-                base.finalThrust = base.currentThrottle * trueMaxThrust;
+                base.finalThrust = (base.currentThrottle * trueMaxThrust) * (float)vessel.mainBody.oceanDensity;
                 base.maxThrust = base.finalThrust;
                 //base.multIsp = 1f;
             }
@@ -49,8 +49,6 @@ namespace Gladia
                 base.maxThrust = base.finalThrust;
                 //base.multIsp = 0.01f;
             }
-
         }
-
     }
 }
