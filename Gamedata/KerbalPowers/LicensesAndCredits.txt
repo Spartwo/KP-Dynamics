@@ -1,0 +1,21 @@
+--------------------------------------------
+Kerbal Powers Dynamics Licensing and Credits
+--------------------------------------------
+
+Functionality by Spartwo
+Original assets and art by MiffedStarfish
+Sounds by Squiddy
+TURD configurations by Spartwo
+Waterfall configurations by Spartwo and Arc
+
+Kerbal Powers Naval and Kerbal Powers Armory comprise wholly original work and are released under the GNU license.
+
+Kerbal Powers Interstellar contains assets modified from the work of Porkjet and Nearta. As such, the TX-40 High Performance Radiator is released under the MIT license, and the Cirrus-V Roundified Liquid Fuel Tank is released under the CC 4.0 license. The ISX-53 "Pletelyos" Afterburning Fusion Engine is released under the GNU license in line with other original assets.
+
+--------------------------------------------------------------------------------------------------------------------------------
+Kerbal Powers is a nation roleplaying game using the universe of Kerbal Space Program as its setting. More info can be found at: 
+https://reddit.com/r/KerbalPowers/
+https://www.youtube.com/@KerbalPowers
+https://discord.gg/ujB29GKx3C
+https://wiki.kerbalpowers.org/
+--------------------------------------------------------------------------------------------------------------------------------
