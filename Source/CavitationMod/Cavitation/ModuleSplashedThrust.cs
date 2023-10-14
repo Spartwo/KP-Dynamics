@@ -8,7 +8,7 @@ using UnityEngine;
 using KSP.IO;
 using KSP.UI.Screens;
 
-namespace Gladia
+namespace Cavitation
 {
     public class ModuleSplashedThrust : ModuleEnginesFX
     {
@@ -31,24 +31,24 @@ namespace Gladia
 
         public override void FXUpdate()
         {
-            base.FXUpdate();
-
-            //Check if the thrust transform is submerged
-            //if (part.checkSplashed())
             if (base.CheckTransformsUnderwater())
             {
                 base.status = "Nominal";
                 base.finalThrust = (base.currentThrottle * trueMaxThrust) * (float)vessel.mainBody.oceanDensity;
                 base.maxThrust = base.finalThrust;
-                //base.multIsp = 1f;
+                base.multIsp = 1f;
             }
-            else 
+            else
             {
                 base.status = "Above Waterline";
-                base.finalThrust = 0;//  (base.currentThrottle * 0.01f) * (trueMaxThrust);
+                base.finalThrust = 0;//(base.currentThrottle * trueMaxThrust) * (float)(vessel.mainBody.atmDensityASL / 830f);
                 base.maxThrust = base.finalThrust;
-                //base.multIsp = 0.01f;
+                base.multIsp = 0; //0.01f;
+                //TODO: Toggle bubble fx directly so can have limited thrust
             }
+
+            base.FXUpdate();
         }
+
     }
 }

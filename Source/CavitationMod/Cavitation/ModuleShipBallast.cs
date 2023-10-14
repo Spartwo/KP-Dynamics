@@ -9,7 +9,7 @@ using KSP.IO;
 using KSP.UI.Screens;
 using KSPAchievements;
 
-namespace Gladia
+namespace Cavitation
 {
     //[KSPAddon(KSPAddon.Startup.Flight, false)]
     public class ModuleShipBallast : PartModule
