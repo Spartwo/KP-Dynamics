@@ -8,9 +8,9 @@ Sounds by Squiddy
 TURD configurations by Spartwo
 Waterfall configurations by Spartwo
 
-Kerbal Powers Naval and Kerbal Powers Armory comprise wholly original work and are released under the GNU license.
+Kerbal Powers Naval and Kerbal Powers Armory comprise wholly original work and are released under the GPL 3.0 license.
 
-Kerbal Powers Interstellar contains assets modified from the works of Porkjet and Nearta. As such, the TX-40 High Performance Radiator is released under the MIT license, and the Cirrus-V Roundified Liquid Fuel Tank is released under the CC 4.0 license. The ISX-53 "Pletelyos" Afterburning Fusion Engine is released under the GNU license in line with other original assets.
+Kerbal Powers Interstellar contains assets modified from the works of Porkjet and Nearta. As such, the TX-40 High Performance Radiator is released under the MIT license, and the Cirrus-V Roundified Liquid Fuel Tank is released under the CC 4.0 license. The ISX-53 "Pletelyos" Afterburning Fusion Engine is released under the GPL 3.0 license in line with other original assets.
 
 --------------------------------------------------------------------------------------------------------------------------------
 Kerbal Powers is a nation roleplaying game using the universe of Kerbal Space Program as its setting. More info can be found at: 
