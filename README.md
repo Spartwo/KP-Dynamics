@@ -16,6 +16,7 @@ A small mod adding an extremely efficient but thermally demanding afterburning f
 -------------------------------------------------------
 ### Kerbal Powers Armory
 
+![alt text](https://wiki.kerbalpowers.org/images/f/f6/KP_Armory_2.png)
 ![alt text](https://wiki.kerbalpowers.org/images/f/f6/KP_Armory.png)
 ![alt text](https://i.imgur.com/JKCSl2w.png)
 An addon for BDArmory, adding two new radars with unique functionality alongside a high-powered microwave turret, additional yields of bomb, and a smaller smoke countermeasure launcher variant.
