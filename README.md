@@ -3,6 +3,7 @@ A series of mods created for the game Kerbal Powers, by Spartwo and MiffedStarfi
 -------------------------------------------------------
 ### Kerbal Powers Naval
 
+![alt text](https://wiki.kerbalpowers.org/images/c/ca/KP_Naval_2.png)
 ![alt text](https://wiki.kerbalpowers.org/images/1/19/KP_Naval.png)
 ![alt text](https://i.imgur.com/naYFVSZ.png)
 
