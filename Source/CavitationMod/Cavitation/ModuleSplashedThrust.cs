@@ -33,14 +33,14 @@ namespace Cavitation
         {
             if (base.CheckTransformsUnderwater())
             {
-                base.status = "Nominal";
+                base.status = "#LOC_KPDynamics_ThrustNominal";
                 base.finalThrust = (base.currentThrottle * trueMaxThrust) * (float)vessel.mainBody.oceanDensity;
                 base.maxThrust = base.finalThrust;
                 base.multIsp = 1f;
             }
             else
             {
-                base.status = "Above Waterline";
+                base.status = "#LOC_KPDynamics_ThrustWaterline";
                 base.finalThrust = 0;//(base.currentThrottle * trueMaxThrust) * (float)(vessel.mainBody.atmDensityASL / 830f);
                 base.maxThrust = base.finalThrust;
                 base.multIsp = 0; //0.01f;

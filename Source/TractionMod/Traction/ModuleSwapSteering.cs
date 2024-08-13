@@ -34,21 +34,21 @@ namespace Traction
         private string storedType = "Pivot";
 
         #region Part Actions
-        [KSPAction("Toggle Steering Type")]
+        [KSPAction("#LOC_KPDynamics_SteerToggle")]
         public void ToggleAction(KSPActionParam param)
         {
             currentType = (currentType == "Pivot") ? "Differential" : "Pivot";
             AlignSteering(currentType == "Pivot");
         }
 
-        [KSPAction("Enable Differential Steering")]
+        [KSPAction("#LOC_KPDynamics_DiffSteer")]
         public void MotorAction(KSPActionParam param)
         {
             currentType = "Differential";
             AlignSteering(false);
         }
 
-        [KSPAction("Enable Pivot Steering")]
+        [KSPAction("#LOC_KPDynamics_PivotSteer")]
         public void PivotAction(KSPActionParam param)
         {
             currentType = "Pivot";

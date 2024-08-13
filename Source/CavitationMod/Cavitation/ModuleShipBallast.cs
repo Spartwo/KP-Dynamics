@@ -8,6 +8,7 @@ using UnityEngine;
 using KSP.IO;
 using KSP.UI.Screens;
 using KSPAchievements;
+using BDArmory.Utils;
 
 namespace Cavitation
 {
@@ -17,6 +18,7 @@ namespace Cavitation
         // This class creates a system of ballast storage and expulsion for attached parts
 
         const string ballastGroupName = "Ballast";
+        const string ballastDisplayName = "#LOC_KPDynamics_Ballast";
 
         // CFG Values
         [KSPField(isPersistant = true)]
@@ -38,13 +40,14 @@ namespace Cavitation
         // user settings
 
         float partBuoyancy;
+
         [KSPAxisField(isPersistant = true,
             guiActive = true,
             guiActiveEditor = true,
-            guiName = "Target Depth",
+            guiName = "#LOC_KPDynamics_TargetDepth",
             guiUnits = " m",
             groupName = ballastGroupName,
-            groupDisplayName = ballastGroupName,
+            groupDisplayName = ballastDisplayName,
             axisMode = KSPAxisMode.Incremental,
             minValue = 0f,
             maxValue = 2000f,
@@ -60,32 +63,32 @@ namespace Cavitation
          [KSPField(isPersistant = false,
              guiActive = true,
              guiActiveEditor = false,
-             guiName = "Current Depth",
+             guiName = "#LOC_KPDynamics_CurrentDepth",
              guiUnits = " m",
              groupName = ballastGroupName,
-             groupDisplayName = ballastGroupName
+             groupDisplayName = ballastDisplayName
             )]
          public int currentDepth = 0;
 
         [KSPField(isPersistant = false,
             guiActive = true,
             guiActiveEditor = false,
-            guiName = "Flooded",
+            guiName = "#LOC_KPDynamics_Flooded",
             guiUnits = "%",
             groupName = ballastGroupName,
-            groupDisplayName = ballastGroupName
+            groupDisplayName = ballastDisplayName
            )]
         public int fillPercent = 0;
 
         [KSPField(isPersistant = true,
              guiActive = true,
              guiActiveEditor = true,
-             guiName = "Pump",
+             guiName = "#LOC_KPDynamics_Pump",
              groupName = ballastGroupName,
-             groupDisplayName = ballastGroupName),
+             groupDisplayName = ballastDisplayName),
              UI_Toggle(
-                 enabledText = "Enabled",
-                 disabledText = "Disabled",
+                 enabledText = "#LOC_KPDynamics_Enabled",
+                 disabledText = "#LOC_KPDynamics_Disabled",
                  scene = UI_Scene.All
              )]
          public bool pumpActive = false;
@@ -93,19 +96,19 @@ namespace Cavitation
          [KSPField(isPersistant = false,
              guiActive = true,
              guiActiveEditor = false,
-             guiName = "Status",
+             guiName = "#LOC_KPDynamics_Status",
              groupName = ballastGroupName,
-             groupDisplayName = ballastGroupName)]
-        public string ballastStatus = "Idle";
+             groupDisplayName = ballastDisplayName)]
+        public string ballastStatus = StringUtils.Localize("#LOC_KPDynamics_BallastIdle");
 
         float smallestVariantMass = 0;
         public override void OnStart(StartState state)
         {
-            if (HighLogic.LoadedSceneIsEditor)
+            if (HighLogic.LoadedSceneIsEditor) 
+            { 
                 GameEvents.onEditorVariantApplied.Add(OnVariantApplied);
-
-            if (HighLogic.LoadedSceneIsEditor)
                 GameEvents.onEditorVariantApplied.Add(OnEditorVariantApplied);
+            }
 
             partBuoyancy = Mathf.Clamp(part.buoyancy, minBuoyancy, maxBuoyancy);
 
@@ -116,7 +119,30 @@ namespace Cavitation
             smallestVariantMass = part.mass;
         }
 
-        public void Update()
+        #region Part Actions
+        [KSPAction("#LOC_KPDynamics_TogglePump")]
+        public void AGTogglePump(KSPActionParam param) 
+        {
+            pumpActive = !pumpActive;
+            //UpdateUI(pumpActive);
+        }
+
+        [KSPAction("#LOC_KPDynamics_EnablePump")]
+        public void AGEnablePump(KSPActionParam param)
+        {
+            pumpActive = true;
+            //UpdateUI(pumpActive);
+        }
+
+        [KSPAction("#LOC_KPDynamics_DisablePump")]
+        public void AGDisablePump(KSPActionParam param)
+        {
+            pumpActive = false;
+            //UpdateUI(pumpActive);
+        }
+        #endregion
+
+        public override void OnUpdate()
         {
             //On physics update
             //gradual buoyancy update in flight
@@ -127,6 +153,7 @@ namespace Cavitation
                 //Vector3 CenterOfBuoyancy
                 //Compare with target depth and adjust flooding status
                 PumpAdjust();
+                
             }
         }
 
@@ -148,19 +175,19 @@ namespace Cavitation
                 {
                     if (part.GroundContact)
                     {
-                        ballastStatus = "Run Aground";
+                        ballastStatus = StringUtils.Localize("#LOC_KPDynamics_BallastAground");
                     }
                     else if (error < -1)
                     {
-                        ballastStatus = "Ascending";
+                        ballastStatus = StringUtils.Localize("#LOC_KPDynamics_BallastAscending");
                     }
                     else if (error > 1)
                     {
-                        ballastStatus = "Descending";
+                        ballastStatus = StringUtils.Localize("#LOC_KPDynamics_BallastDescending");
                     }
                     else
                     {
-                        ballastStatus = "Idle";
+                        ballastStatus = StringUtils.Localize("#LOC_KPDynamics_BallastIdle");
                     }
 
                     if (vesselSpeed >= verticalSpeedLimit) // ascending too fast
@@ -195,14 +222,15 @@ namespace Cavitation
                 }
                 else
                 {
-                    ballastStatus = "Insufficient Electricity";
+                    ballastStatus = StringUtils.Localize("#LOC_KPDynamics_NoEC");
                 }
             }
             else
             {
                 currentDepth = 0;
-                ballastStatus = "Above Waterline";
+                ballastStatus = StringUtils.Localize("#LOC_KPDynamics_ThrustWaterline");
             }
+            //Debug.Log("[Cavitation] Real Bouyancy: " + part.buoyancy);
         }
 
         private void OnVariantApplied(Part appliedPart, PartVariant variant)
@@ -211,14 +239,14 @@ namespace Cavitation
             {
                 float pumpChange = smallestVariantMass / (smallestVariantMass + variant.Mass);
                 variantPumpRate = pumpChange * pumpRate;
-                Debug.Log("Pump Rate" + variantPumpRate + "/s");
+                //Debug.Log("[Cavitation] : Pump Rate" + variantPumpRate + "/s");
             }
         }
         private void OnEditorVariantApplied(Part appliedPart, PartVariant variant)
         {
             float pumpChange = smallestVariantMass / (smallestVariantMass + variant.Mass);
             variantPumpRate = pumpChange * pumpRate;
-            Debug.Log("Edit Pump Rate" + variantPumpRate + "/s");
+            //Debug.Log("[Cavitation] : Edit Pump Rate" + variantPumpRate + "/s");
         }
         private Boolean availableEC(float ECDemand)
         {
