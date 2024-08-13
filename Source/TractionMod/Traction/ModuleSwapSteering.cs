@@ -8,6 +8,7 @@ using UnityEngine;
 using KSP.IO;
 using KSP.UI.Screens;
 using ModuleWheels;
+using VehiclePhysics;
 
 namespace Traction
 {
@@ -15,15 +16,18 @@ namespace Traction
     {
         ModuleWheelMotor PivotMotor;
         ModuleWheelSteering PivotSteer;
-        ModuleWheelMotorSteering TankSteer; 
+        ModuleWheelMotorSteering TankSteer;
+
+        [KSPField(isPersistant = true)]
+        Vector2 Frictions;
         
         //No group preferrably
         [KSPField(
             isPersistant = true,
             guiActive = true,
             guiActiveEditor = true,
-            guiName = "Steering Type"),
-            UI_ChooseOption(controlEnabled = true, affectSymCounterparts = UI_Scene.None,
+            guiName = "#LOC_KPDynamics_SteeringType"),
+            UI_ChooseOption(controlEnabled = true, affectSymCounterparts = UI_Scene.Editor,
             options = new string[] { "Pivot", "Differential" })]
         public string currentType = "Pivot";
 
@@ -59,8 +63,9 @@ namespace Traction
             PivotMotor = part.GetComponent<ModuleWheelMotor>();
             PivotSteer = part.GetComponent<ModuleWheelSteering>();
             TankSteer = part.GetComponent<ModuleWheelMotorSteering>();
+            Frictions = new Vector2(1.5f, 0.5f); //X is regular, Y is differential
 
-            AlignSteering(currentType == "Pivot");
+            //AlignSteering(currentType == "Pivot");
 
         }
 
@@ -74,18 +79,25 @@ namespace Traction
 
         private void AlignSteering(bool Pivot)
         {
+            ModuleWheelBase Axle = part.GetComponent<ModuleWheelBase>(); 
+
+            //Update the comparitor to now match
             storedType = currentType;
             if (Pivot) 
             {
+                Frictions.y = Axle.frictionMultiplier;
                 PivotMotor.enabled = true;
                 PivotSteer.enabled = true;
                 TankSteer.enabled = false;
+                Axle.frictionMultiplier = Frictions.x;
             }
-            else 
+            else
             {
+                Frictions.x = Axle.frictionMultiplier;
                 PivotMotor.enabled = false;
                 PivotSteer.enabled = false;
                 TankSteer.enabled = true;
+                Axle.frictionMultiplier = Frictions.y;
             }
             UpdateUI(Pivot);
         }

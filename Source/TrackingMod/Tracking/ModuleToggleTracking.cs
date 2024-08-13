@@ -17,17 +17,17 @@ namespace ToggleTracking
 
         [KSPEvent(guiActive = true,
             guiActiveEditor = true,
-            guiName = "Tracking")]
+            guiName = "#LOC_KPDynamics_Tracking")]
         public void EventToggleTracking() => ToggleTracking();
 
 
-        [KSPAction("Toggle Tracking")]
+        [KSPAction("#LOC_KPDynamics_ToggleTracking")]
         public void AGToggleTracking(KSPActionParam param) => ToggleTracking();
 
-        [KSPAction("Disable Tracking")]
+        [KSPAction("#LOC_KPDynamics_DisableTracking")]
         public void AGDisableTracking(KSPActionParam param) => SetTracking(false);
 
-        [KSPAction("Enable Tracking")]
+        [KSPAction("#LOC_KPDynamics_EnableTracking")]
         public void AGEnableTracking(KSPActionParam param) => SetTracking(true);
 
         [KSPField(isPersistant = true)]
@@ -86,7 +86,7 @@ namespace ToggleTracking
 
         private void SetToggleName()
         {
-            Events["EventToggleTracking"].guiName = trackingEnabled ? "Disable Tracking" : "Enable Tracking";
+            Events["EventToggleTracking"].guiName = trackingEnabled ? "#LOC_KPDynamics_DisableTracking" : "#LOC_KPDynamics_EnableTracking";
         }
     }
 }

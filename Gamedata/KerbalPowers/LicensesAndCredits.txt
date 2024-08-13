@@ -3,7 +3,8 @@ Kerbal Powers Dynamics Licensing and Credits
 --------------------------------------------
 
 Functionality by Spartwo
-Original assets and art by MiffedStarfish
+BulletDefs by Saturn
+Original assets and art by MiffedStarfish and Spartwo
 Sounds by Squiddy
 TURD configurations by Spartwo
 Waterfall configurations by Spartwo
